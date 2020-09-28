@@ -20,6 +20,7 @@ public class Main {
         String nome = "";
         int tempo = 0;
         int prioridade = 0;
+        String palavras[];
 
         // Váriáveis do processo
         Processo proc, new_proc;
@@ -56,7 +57,7 @@ public class Main {
             else
             {
                 // Looop que executa um processo
-                for (int ciclo_processo=0; ciclo_processo < proc.getTempo(); ciclo_processo++)
+                for (int ciclo_processo=0; ciclo_processo <= proc.getTempo(); ciclo_processo++)
                 {
                     // Incrementa ciclo principal (contador)
                     ciclo_principal++;
@@ -78,7 +79,15 @@ public class Main {
                         System.out.print("Informe o nome do processo ['n' para não adicionar ou 'e' para executar até o fim ou 's' para sair]: ");
 
                         // Input do novo processo
-                        nome = Entrada.next();
+                        palavras = Entrada.nextLine().split(" ");
+                        System.out.println(palavras[0]);
+                        System.out.println(palavras[1]);
+                        nome = palavras[2];
+                        tempo = Integer.parseInt(palavras[5]);
+                        prioridade = Integer.parseInt(palavras[8]);
+                      // for (int i = 0; i < palavras.length;i++){
+                         //  System.out.println(palavras[i]);
+                       //}
                     }
 
                     if (nome.equals("e"))
@@ -94,17 +103,17 @@ public class Main {
                     }
 
                     if (!nome.equals("n"))
-                    {
+                    {  System.out.print("Nenhum processo novo para adicionar agora ");
                         tempo = -1;
 
-                        while (tempo < 0 || tempo > 100)
+                        while (tempo < 0 || tempo >= 100)
                         {
-                            System.out.print("Informe o tempo em ciclos do processo [0:100]: ");
+                            System.out.print("Informe o tempo em ciclos do processo [1:100]: ");
                             tempo = Entrada.nextInt();
 
                         }
 
-                        prioridade = -99;
+                        //prioridade = -99;
 
                         while (prioridade < -20 || prioridade > 19)
                         {
